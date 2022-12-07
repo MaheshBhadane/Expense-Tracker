@@ -160,7 +160,7 @@ export const ExpensesTracker = () => {
             </thead>
             <tbody>
               {expenseList?.map((expense, id) => (
-                <tr>
+                <tr key={id}>
                   <td>{id + 1}</td>
                   <td>{expense?.name}</td>
                   <td>{expense?.amount}</td>
