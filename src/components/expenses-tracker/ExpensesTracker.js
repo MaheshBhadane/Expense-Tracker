@@ -17,6 +17,13 @@ export const ExpensesTracker = () => {
     Other: 0,
   });
 
+  const [expensePercentage, setExpensePercentage] = useState({
+    food: 25,
+    travel: 25,
+    shopping: 25,
+    other: 25,
+  });
+
   const totalSum = Object.values(totalExpense)?.reduce(
     (acc, curr) => acc + curr,
     0
@@ -50,7 +57,7 @@ export const ExpensesTracker = () => {
   };
 
   useEffect(() => {
-    const hehe = expenseList?.map((expense) => {
+    const temp = expenseList?.map((expense) => {
       setTotalExpense({
         ...totalExpense,
         [expense?.catagory]:
@@ -58,6 +65,28 @@ export const ExpensesTracker = () => {
       });
     });
   }, [expenseList]);
+
+  const { Food, Travel, Shopping, Other } = totalExpense;
+
+  useEffect(() => {
+    if (
+      totalExpense?.Food ||
+      totalExpense?.Travel ||
+      totalExpense?.Shopping ||
+      totalExpense?.Other
+    ) {
+      setExpensePercentage({
+        food: totalExpense?.Food ? (totalExpense?.Food * 100) / totalSum : 0,
+        travel: totalExpense?.Travel
+          ? (totalExpense?.Travel * 100) / totalSum
+          : 0,
+        shopping: totalExpense?.Shopping
+          ? (totalExpense?.Shopping * 100) / totalSum
+          : 0,
+        other: totalExpense?.Other ? (totalExpense?.Other * 100) / totalSum : 0,
+      });
+    }
+  }, [Food, Travel, Shopping, Other]);
 
   return (
     <div className="mt-50 layout-column justify-content-center align-items-center">
@@ -148,28 +177,28 @@ export const ExpensesTracker = () => {
             <div
               data-testid="expense-distribution-food"
               style={{
-                width: `${(totalExpense?.Food * 100) / totalSum}%`,
+                width: `${expensePercentage?.food}%`,
               }}
               className="lightblue"
             ></div>
             <div
               data-testid="expense-distribution-travel"
               style={{
-                width: `${(totalExpense?.Travel * 100) / totalSum}%`,
+                width: `${expensePercentage?.travel}%`,
               }}
               className="red"
             ></div>
             <div
               data-testid="expense-distribution-shopping"
               style={{
-                width: `${(totalExpense?.Shopping * 100) / totalSum}%`,
+                width: `${expensePercentage?.shopping}%`,
               }}
               className="lightgreen"
             ></div>
             <div
               data-testid="expense-distribution-other"
               style={{
-                width: `${(totalExpense?.Other * 100) / totalSum}%`,
+                width: `${expensePercentage?.other}%`,
               }}
               className="orange"
             ></div>
