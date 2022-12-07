@@ -1,0 +1,45 @@
+.title {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+select {
+  box-shadow: inset 0 1px 4px rgb(0 0 0 / 10%), 0 0 0 transparent;
+  border: 0;
+  border-radius: 0;
+  background-color: #f3f7f7;
+  color: #0e141e;
+  height: 36px;
+  outline: none;
+  font-size: 14px;
+  padding: 0 12px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.1s ease-in-out;
+}
+
+.lightblue {
+	background-color: lightblue;
+}
+
+.red{
+	background-color: red;
+}
+.lightgreen{
+	background-color: lightgreen;
+}
+.orange{
+	background-color: orange;
+}
+
+.h-30{
+	height:30px;
+}
+
+.height-20{
+	height:20px
+}
+.width-20{
+	width:20px
+}
