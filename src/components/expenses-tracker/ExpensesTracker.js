@@ -18,10 +18,10 @@ export const ExpensesTracker = () => {
   });
 
   const [expensePercentage, setExpensePercentage] = useState({
-    food: 25,
-    travel: 25,
-    shopping: 25,
-    other: 25,
+    food: 100,
+    travel: 100,
+    shopping: 100,
+    other: 100,
   });
 
   const totalSum = Object.values(totalExpense)?.reduce(
@@ -49,7 +49,7 @@ export const ExpensesTracker = () => {
         alert("Expense Amount required and should be greater than 0");
       }
       if (!expense.catagory) {
-        alert("Select type");
+        alert("Please Choose Expense Type");
       }
     } else {
       setExpenseList((prevState) => [...prevState, expense]);
