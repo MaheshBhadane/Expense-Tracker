@@ -11,10 +11,10 @@ export const ExpensesTracker = () => {
   const [expense, setExpense] = useState(initialState);
   const [expenseList, setExpenseList] = useState([]);
   const [totalExpense, setTotalExpense] = useState({
-    Food: 0,
-    Travel: 0,
-    Shopping: 0,
-    Other: 0,
+    food: 0,
+    travel: 0,
+    shopping: 0,
+    other: 0,
   });
 
   const [expensePercentage, setExpensePercentage] = useState({
@@ -66,27 +66,27 @@ export const ExpensesTracker = () => {
     });
   }, [expenseList]);
 
-  const { Food, Travel, Shopping, Other } = totalExpense;
+  const { food, travel, shopping, other } = totalExpense;
 
   useEffect(() => {
     if (
-      totalExpense?.Food ||
-      totalExpense?.Travel ||
-      totalExpense?.Shopping ||
-      totalExpense?.Other
+      totalExpense?.food ||
+      totalExpense?.travel ||
+      totalExpense?.shopping ||
+      totalExpense?.other
     ) {
       setExpensePercentage({
-        food: totalExpense?.Food ? (totalExpense?.Food * 100) / totalSum : 0,
-        travel: totalExpense?.Travel
-          ? (totalExpense?.Travel * 100) / totalSum
+        food: totalExpense?.food ? (totalExpense?.food * 100) / totalSum : 0,
+        travel: totalExpense?.travel
+          ? (totalExpense?.travel * 100) / totalSum
           : 0,
-        shopping: totalExpense?.Shopping
-          ? (totalExpense?.Shopping * 100) / totalSum
+        shopping: totalExpense?.shopping
+          ? (totalExpense?.shopping * 100) / totalSum
           : 0,
-        other: totalExpense?.Other ? (totalExpense?.Other * 100) / totalSum : 0,
+        other: totalExpense?.other ? (totalExpense?.other * 100) / totalSum : 0,
       });
     }
-  }, [Food, Travel, Shopping, Other]);
+  }, [food, travel, shopping, other]);
 
   return (
     <div className="mt-50 layout-column justify-content-center align-items-center">
@@ -123,16 +123,16 @@ export const ExpensesTracker = () => {
               <option disabled selected>
                 Select Type
               </option>
-              <option data-testid="expense-type-1" value={"Food"}>
+              <option data-testid="expense-type-1" value={"food"}>
                 Food
               </option>
-              <option data-testid="expense-type-2" value={"Travel"}>
+              <option data-testid="expense-type-2" value={"travel"}>
                 Travel
               </option>
-              <option data-testid="expense-type-3" value={"Shopping"}>
+              <option data-testid="expense-type-3" value={"shopping"}>
                 Shopping
               </option>
-              <option data-testid="expense-type-4" value={"Other"}>
+              <option data-testid="expense-type-4" value={"other"}>
                 Other
               </option>
             </select>
