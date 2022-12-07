@@ -76,14 +76,14 @@ export const ExpensesTracker = () => {
       totalExpense?.other
     ) {
       setExpensePercentage({
-        food: totalExpense?.food ? (totalExpense?.food * 100) / totalSum : 0,
-        travel: totalExpense?.travel
+        food: Math.floor(totalExpense?.food ? (totalExpense?.food * 100) / totalSum : 0),
+        travel: Math.floor(totalExpense?.travel
           ? (totalExpense?.travel * 100) / totalSum
-          : 0,
-        shopping: totalExpense?.shopping
+          : 0),
+        shopping: Math.floor(totalExpense?.shopping
           ? (totalExpense?.shopping * 100) / totalSum
-          : 0,
-        other: totalExpense?.other ? (totalExpense?.other * 100) / totalSum : 0,
+          : 0),
+        other: Math.floor(totalExpense?.other ? (totalExpense?.other * 100) / totalSum : 0),
       });
     }
   }, [food, travel, shopping, other]);
@@ -160,7 +160,7 @@ export const ExpensesTracker = () => {
             </thead>
             <tbody>
               {expenseList?.map((expense, id) => (
-                <tr key={id}>
+                <tr key={id} data-testid={`expense-list-${id}`}>
                   <td>{id + 1}</td>
                   <td>{expense?.name}</td>
                   <td>{expense?.amount}</td>
